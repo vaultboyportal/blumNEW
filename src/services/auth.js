@@ -28,7 +28,7 @@ class AuthService {
     } catch (error) {
       if (!skipLog) {
         user.log.logError(
-          `Đăng nhập thất bại: ${error.response?.data?.message}`
+          `Login failed: ${error.response?.data?.message}`
         );
       }
       return null;
@@ -53,7 +53,7 @@ class AuthService {
     } catch (error) {
       if (!skipLog) {
         user.log.logError(
-          `Refresh token thất bại: ${error.response?.data?.message}`
+          `Refresh token failed: ${error.response?.data?.message}`
         );
       }
       return null;
@@ -62,7 +62,7 @@ class AuthService {
 
   async handleLogin(user) {
     console.log(
-      `============== Chạy tài khoản ${user.index} | ${user.info.fullName.green} ==============`
+      `============== Run account ${user.index} | ${user.info.fullName.green} ==============`
     );
 
     let info = null;
@@ -102,7 +102,7 @@ class AuthService {
       };
     }
     user.log.logError(
-      "Quá trình đăng nhập thất bại, vui lòng kiểm tra lại thông tin tài khoản (có thể cần phải lấy mới query_id). Hệ thống sẽ thử đăng nhập lại sau 60s"
+      "The login process failed, please check your account information again (you may need to get a new query_id). The system will try to log in again after 60 seconds"
     );
     return {
       status: 0,
@@ -119,7 +119,7 @@ class AuthService {
       return null;
     } catch (error) {
       user.log.logError(
-        `Lấy thông tin tài khoản thất bại: ${error.response?.data?.message}`
+        `Retrieving account information failed: ${error.response?.data?.message}`
       );
       return null;
     }
@@ -148,7 +148,7 @@ class AuthService {
       return 1;
     }
     // user.log.logError(
-    //   "Quá trình kết nối lại thất bại, vui lòng kiểm tra lại thông tin tài khoản (có thể cần phải lấy mới query_id)"
+    //   "The reconnection process failed, please check your account information again (you may need to get a new query_id)"
     // );
     return 0;
   }
@@ -162,8 +162,8 @@ class AuthService {
     const profile = await this.getProfile(user);
     if (profile) {
       user.log.log(
-        colors.green("Đăng nhập thành công: ") +
-          `Số điểm: ${
+        colors.green("Successful login: ") +
+          `Score: ${
             colors.green(Math.round(profile?.availableBalance)) + user.currency
           }`
       );
@@ -185,7 +185,7 @@ class AuthService {
     fileHelper.saveToken(user.info.id, info);
     // const profile = await this.getProfile(user);
     // if (profile) {
-    //   user.log.logSuccess("Kết nối lại thành công");
+    //   user.log.logSuccess("Reconnect successfully");
     // }
   }
 }

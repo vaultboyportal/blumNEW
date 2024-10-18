@@ -9,15 +9,15 @@ class FarmingClass {
       const { data } = await user.http.post(0, "farming/start", {});
       if (data) {
         user.log.log(
-          `Đã bắt đầu farming, chờ claim sau: ${colors.blue("480 phút")}`
+          `Farming has started, waiting for the following claim: ${colors.blue("480 minute")}`
         );
         return true;
       } else {
-        throw new Error(`Bắt đầu farming thất bại: ${data.message}`);
+        throw new Error(`Start farming failed: ${data.message}`);
       }
     } catch (error) {
       user.log.logError(
-        `Bắt đầu farming thất bại: ${error.response?.data?.message}`
+        `Start farming failed: ${error.response?.data?.message}`
       );
       return false;
     }
@@ -28,17 +28,17 @@ class FarmingClass {
       const { data } = await user.http.post(0, "farming/claim", {});
       if (data) {
         user.log.log(
-          `Claim farming thành công, phần thưởng: ${colors.green(
+          `Claim farming success, rewards: ${colors.green(
             balance + user.currency
           )}`
         );
         return true;
       } else {
-        throw new Error(`Claim farming thất bại: ${data.message}`);
+        throw new Error(`Claim farming fails: ${data.message}`);
       }
     } catch (error) {
       user.log.logError(
-        `Claim farming thất bại: ${error.response?.data?.message}`
+        `Claim farming fails: ${error.response?.data?.message}`
       );
       return false;
     }
@@ -61,8 +61,8 @@ class FarmingClass {
         }
       } else {
         user.log.log(
-          `Chưa tới thời gian claim, chờ sau: ${colors.blue(
-            Math.abs(diffTimeClaim) + " phút"
+          `It's not time to claim yet, wait until later: ${colors.blue(
+            Math.abs(diffTimeClaim) + " minute"
           )}`
         );
         return Math.abs(diffTimeClaim);

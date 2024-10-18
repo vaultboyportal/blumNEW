@@ -95,7 +95,7 @@ export class HttpService {
         this.log.updateIp(ip);
         return ip;
       } else {
-        throw new Error("Proxy lỗi, kiểm tra lại kết nối proxy");
+        throw new Error("Proxy error, check the proxy connection again");
       }
     } catch (error) {
       this.log.updateIp("🖥️");

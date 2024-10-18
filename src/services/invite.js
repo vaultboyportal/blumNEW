@@ -10,12 +10,12 @@ class InviteClass {
         return data;
       } else {
         throw new Error(
-          `Lấy thông tin invite balance thất bại: ${data.message}`
+          `Retrieving invite balance information failed: ${data.message}`
         );
       }
     } catch (error) {
       user.log.logError(
-        `Lấy thông tin invite balance thất bại: ${error.response?.data?.message}`
+        `Retrieving invite balance information failed: ${error.response?.data?.message}`
       );
       return 0;
     }
@@ -26,17 +26,17 @@ class InviteClass {
       const { data } = await user.http.post(3, "friends/claim", {});
       if (data) {
         user.log.log(
-          `Claim điểm giới thiệu thành công, nhận được: ${colors.green(
+          `Claim referral points successfully, receive: ${colors.green(
             data?.claimBalance + user.currency
           )}`
         );
         return true;
       } else {
-        throw new Error(`Claim điểm giới thiệu thất bại: ${data.message}`);
+        throw new Error(`Claim referral point failed: ${data.message}`);
       }
     } catch (error) {
       user.log.logError(
-        `Claim điểm giới thiệu thất bại: ${error.response?.data?.message}`
+        `Claim referral point failed: ${error.response?.data?.message}`
       );
       return false;
     }
