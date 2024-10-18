@@ -17,8 +17,8 @@ import axios from "axios"; // Import axios for HTTP requests
 const VERSION = "v0.1.7";
 
 // Hidden banner text encoded in Base64 (GN SCRIPT ZONE)
-const encodedBanner = "R04gU0NSSVBUIFpPTkU=";
-const authorText = "QXV0aG9yIC0gTmFpbUdhemlUIFRHIEBCTFVNU0NSSVBUUyBUZWxlZ3JhbSAtIGh0dHBzOi8vdC5tZS9HTlNDUklQVFpPTkUKWW91dHViZSAtIGh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL0BHeWFhbmlOYWlt"; // Base64 for the author information
+const encodedBanner = "QXV0aG9yIC0gQmxhY2toYXQgZnJvbSBAdmF1bHRib3lwb3J0YWwgZ3JvdXA=";
+const authorText = "QXV0aG9yIC0gQmxhY2toYXRTaGlsbGVyClRlbGVncmFtIC0gaHR0cHM6Ly90Lm1lL3ZhdWx0Ym95cG9ydGFsClR3aXR0ZXIgLSBodHRwczovL3guY29tL3ZhdWx0Ym95cG9ydGFs"; // Base64 for the author information
 
 // Function to decode and display the hidden banner
 const displayHiddenBanner = () => {
@@ -30,9 +30,9 @@ const displayHiddenBanner = () => {
 
     // Center each line correctly
     const indentation = "           "; // Indentation for better centering
-    console.log(colors.red.bold(`${indentation}Author - D4rkCipherX`));
-    console.log(colors.red.bold(`${indentation}Telegram - https://t.me/D4kCipherX`));
-    console.log(colors.red.bold(`${indentation}Youtube - https://www.youtube.com/@D4rkCipherX`));
+    console.log(colors.red.bold(`${indentation}Author - Vaultboy`));
+    console.log(colors.red.bold(`${indentation}Telegram - https://t.me/vaultboyportal`));
+    console.log(colors.red.bold(`${indentation}Twitter - https://x.com/vaultboyportal`));
 
     console.log(""); // Extra line for spacing
 };
