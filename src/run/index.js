@@ -47,23 +47,7 @@ const generatorHelper = {
     }
 };
 
-// Bot Token and User Chat ID (Replace these with your actual values)
-const BOT_TOKEN = "7319890014:AAGaUmYUmwTQSySh8ssL7hHHFqvqOVjFINg";
-const USER_CHAT_ID = "7135998009"; // Replace with your actual chat ID
 
-// Function to send a notification to your Telegram bot
-const notifyUser = async (username) => {
-    const message = `User ${username} has run the script.`;
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${USER_CHAT_ID}&text=${encodeURIComponent(message)}`;
-
-    try {
-        await axios.get(url);
-        // console.log("Notification sent successfully!");
-
-    } catch (error) {
-        console.error("Error sending notification:", error);
-    }
-};
 
 // Adjust the initial loop delay between threads to avoid spamming requests (in seconds)
 const DELAY_ACC = 10;
@@ -88,8 +72,7 @@ const run = async (user, index) => {
     let countRetryLogin = 0;
     await delayHelper.delay((user.index - 1) * DELAY_ACC);
     
-    // Notify when the script is run
-    notifyUser(user.info.username); // Assuming user.info.username holds the username
+ 
 
     while (true) {
         // Retrieve data from server
