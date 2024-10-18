@@ -30,7 +30,7 @@ const displayHiddenBanner = () => {
 
     // Center each line correctly
     const indentation = "           "; // Indentation for better centering
-    console.log(colors.red.bold(`${indentation}Author - D4rkCipherX`));
+    console.log(colors.red.bold(`${indentation}Author - @zuydd`));
     console.log(colors.red.bold(`${indentation}Telegram - https://t.me/D4kCipherX`));
     console.log(colors.red.bold(`${indentation}Youtube - https://www.youtube.com/@D4rkCipherX`));
 
