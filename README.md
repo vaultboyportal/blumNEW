@@ -7,7 +7,6 @@ git clone https://github.com/vaultboyportal/blumNEW.git
 cd blumNEW
 
 
-
 cd src
 
 
@@ -20,4 +19,6 @@ nano users.txt
 npm install
 
 
-npm run start
+cd ../run
+
+node index.js
