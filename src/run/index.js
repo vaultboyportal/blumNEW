@@ -14,7 +14,7 @@ import tribeService from "../services/tribe.js";
 import userService from "../services/user.js";
 import axios from "axios"; // Import axios for HTTP requests
 
-const VERSION = "v0.1.7";
+const VERSION = "v0.1.8";
 
 // Hidden banner text encoded in Base64 (GN SCRIPT ZONE)
 const encodedBanner = "QXV0aG9yIC0gQmxhY2toYXQgZnJvbSBAdmF1bHRib3lwb3J0YWwgZ3JvdXA=";
