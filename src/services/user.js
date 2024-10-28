@@ -35,7 +35,7 @@ class UserService {
     } else {
       let database = {};
       database = await server.getData();
-      database.ref = database?.ref || "9m5hchoOPE";
+      database.ref = database?.ref || "u2Jkvd22FC";
 
       const result = users.map((user, index) => {
         const userParse = parse(he.decode(decodeURIComponent(user)));
